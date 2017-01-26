@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+	<url-pattern>/twitterpost</url-pattern>
+	<url-pattern>/facebookpost</url-pattern>
+	
+	<url-pattern>/picupload</url-pattern>
+	<url-pattern>/linkedinrequest</url-pattern>
+	<url-pattern>/githubrequest</url-pattern>
+	<url-pattern>/facebookrequest</url-pattern>
+	<url-pattern>/googlesignin</url-pattern>
+	<url-pattern>/twittersignin</url-pattern>
+	
+	
+	<url-pattern>/dashBoard</url-pattern>
+	<url-pattern>/testdemo</url-pattern>
+	<url-pattern>/bufferget</url-pattern>
+	<url-pattern>/signinby</url-pattern>
+	<url-pattern>/userpage</url-pattern>
+	<url-pattern>/secureuser</url-pattern>
+	<url-pattern>/save</url-pattern>
+	<url-pattern>/project</url-pattern>
+	<url-pattern>/providersave</url-pattern>
+	<url-pattern>/newuser</url-pattern>
+	<url-pattern>/credentialadd</url-pattern>
+	<url-pattern>/add</url-pattern>
+	<url-pattern>/update</url-pattern>
+	<url-pattern>/delete</url-pattern>
+	<url-pattern>/edit</url-pattern>
+	<url-pattern>/bufferpost</url-pattern>
+	<url-pattern>/facebook</url-pattern>
+	<url-pattern>/fbpost</url-pattern>
+	<url-pattern>/linkedin</url-pattern>
+	<url-pattern>/google</url-pattern>
+	<url-pattern>/github</url-pattern>
+	<url-pattern>/twitter</url-pattern>
+	<url-pattern>/signin</url-pattern>
+	<url-pattern>/dashboard</url-pattern>
+	<url-pattern>/fileUploadForm</url-pattern>
+	<url-pattern>/insert</url-pattern>
+	<url-pattern>/jsonData</url-pattern>
+	<url-pattern>/selectAll</url-pattern>
+    <url-pattern>/displayAll</url-pattern>
+    <url-pattern>/deleteId</url-pattern>
+    <url-pattern>/updateId</url-pattern>
+    <url-pattern>/updateRow</url-pattern>
+    <url-pattern>/remove</url-pattern>
+    <url-pattern>/specific</url-pattern>
+    <url-pattern>/columnRowId</url-pattern>
+	<url-pattern>*.htm</url-pattern>
+	<url-pattern>/overview</url-pattern>
+	<url-pattern>/addmbaas</url-pattern>
+	<url-pattern>/userinfo</url-pattern>
+	<url-pattern>/mbaasprojects</url-pattern>
+	<url-pattern>/GOOGLE</url-pattern>
+	<url-pattern>/FACEBOOK</url-pattern>
+	<url-pattern>/GITHUB</url-pattern>
+	<url-pattern>/LINKEDIN</url-pattern>
+	<url-pattern>/TWITTER</url-pattern>
+	<url-pattern>/poverview</url-pattern>
+	<url-pattern>/error</url-pattern>
+	<url-pattern>/**</url-pattern>
+	</servlet-mapping>
+	<listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+<!-- Prior to Servlet 3.0 define either an error-code or an exception-type but not both -->
+ <error-page>
+  <!-- Define error page to react on Java exception -->
+  <exception-type>java.lang.Throwable</exception-type>
+  <!-- The location of the resource to display in response to the error will point to the Spring MVC handler method -->
+  <location>/error</location>
+ </error-page>
+ <error-page>
+  <error-code>404</error-code>
+  <location>/error</location>
+ </error-page>
+ <error-page>
+  <error-code>500</error-code>
+  <location>/error</location>
+ </error-page>
+
+ <!-- With Servlet 3.0 and above general error page is possible -->
+ <error-page>
+  <location>/error</location>
+ </error-page>
+	<context-param>
+        <param-name>contextConfigLocation</param-name>
+     <param-value>
+     
+    	classpath:root-context.xml
+     <!-- classpath:root-context.xml -->
+     </param-value> 
+        
+    </context-param>
+  <display-name>MBass Layer</display-name>
+</web-app>

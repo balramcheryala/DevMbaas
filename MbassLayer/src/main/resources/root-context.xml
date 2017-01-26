@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+                           http://www.springframework.org/schema/mvc 
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+	<context:annotation-config />
+	<!-- Base package for checking the annotated classes -->
+	<context:component-scan base-package="org.bridgelabz"></context:component-scan>
+
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Configure JDBC Connection -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/bridgelabz" />
+		<property name="username" value="root" />
+		<property name="password" value="ammy" />
+	</bean>
+
+	<!-- Configure Hibernate 4 Session Factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>org.bridgelabz.model.Projects</value> <!-- Entity classes -->
+				<value>org.bridgelabz.form.Projectname</value>
+				<value>org.bridgelabz.model.ClientCredentialsModel</value>
+				<value>org.bridgelabz.model.ClientDetailsModel</value>
+				<value>org.bridgelabz.model.FacebookDetails</value>
+				<value>org.bridgelabz.model.GoogleCredentials</value>
+				<value>org.bridgelabz.model.GitHubDetails</value>
+				<value>org.bridgelabz.model.LinkedInDetails</value>
+				<value>org.bridgelabz.model.TwitterDetails</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="detailservice" class="org.bridgelabz.service.ClientDetailsServiceImpl" />
+	<bean id="credentialservice" class="org.bridgelabz.service.CredentialsServiceImpl" />
+	<bean id="fff" class="org.bridgelabz.service.ProjectServiceImpl" />
+
+
+	<!-- Controller Beans Initialization (Social @Balram) -->
+	<bean id="authController" class="org.bridgelabz.socialcontrollers.AuthController" />
+	<bean id="social" class="org.bridgelabz.socialcontrollers.BufferController" />
+	<bean id="facebook" class="org.bridgelabz.socialcontrollers.FaceBookController" />
+	<bean id="twittercontroller" class="org.bridgelabz.socialcontrollers.TwitterControllers" />
+	<bean id="linkedin" class="org.bridgelabz.socialcontrollers.LinkedINController" />
+	<bean id="google" class="org.bridgelabz.socialcontrollers.GoogleController" />
+	<bean id="github" class="org.bridgelabz.socialcontrollers.GitHubController" />
+	<bean id="errorhandler" class="org.bridgelabz.socialcontrollers.CustomExceptionHandler" />
+
+
+
+	<bean id="project" class="org.bridgelabz.controllers.Dashboard" />
+	<bean id="upload" class="org.bridgelabz.controllers.UploadController" />
+	<bean id="ccdi" class="org.bridgelabz.dao.ClientCredentialsDaoImpl" />
+	<bean id="cddi" class="org.bridgelabz.dao.ClientDetailsDaoImpl" />
+	<bean id="qwerty" class="org.bridgelabz.dao.CreationDaoImpl" />
+	<bean id="dao" class="org.bridgelabz.dao.TableDaoImpl" />
+	<bean id="fileValidator" class="org.bridgelabz.validator.FileValidator" />
+	<bean id="file" class="org.bridgelabz.util.JSONUtils" />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+</beans>
