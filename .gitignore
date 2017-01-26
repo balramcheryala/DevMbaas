@@ -30,3 +30,15 @@ out/
 *.epoch
 tmlog*.log
 tmlog.lck
+
+# IntelliJ project files
+.idea
+*.iml
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# TMP SQL files #
+.drop_all.sql
