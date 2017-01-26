@@ -44,3 +44,4 @@ org/bridgelabz/form/ClientCredentialsBean.class
 org/bridgelabz/model/Example.class
 org/bridgelabz/dao/TableDaoImpl.class
 org/bridgelabz/form/ClientDetailsBean.class
+org/bridgelabz/enums/SocialProvider.class
