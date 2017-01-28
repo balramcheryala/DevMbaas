@@ -41,3 +41,48 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+ *.class
+-*.log
+-**classes
+-**bin
+-**target
+-**test-output
+-**overlays
+-
+-# Eclipse project structure files
+-**.project
+-**.classpath
+-**.settings
+-**.springBeans
+-
+-
+-#IntelliJ project structure files
+-**intellij
+-**intellij-win
+-**workspace.xml
+-**compiler.xml
+-**encodings.xml
+-**modules.xml
+-
+-# JTA Files #
+-*.epoch
+-tmlog*.log
+-tmlog.lck
+-
+-# IntelliJ project files
+-.idea
+-*.iml
+-
+-# Package Files #
+
+-.DS_Store
+-
+-.idea/
+-out/
+-# TMP SQL files #
+-.drop_all.sql
+
+
+-*.war
+-*.ear
